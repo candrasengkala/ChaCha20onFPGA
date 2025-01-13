@@ -1,0 +1,163 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity uart_test is
+    port (
+        clk         	:   in  std_logic;
+        rx_line     	:   in  std_logic;
+        tx_line     	:   out std_logic        
+    );
+end entity;
+
+architecture behavior of uart_test is
+	type state is (recieving, sending, checksent, checkrecieved, loading, done, donefinale);
+	signal currentstate : state := recieving;	
+    component UART_transmit is
+        port(
+            clk                     :   in  std_logic;
+            en_uart_transmit        :   in  std_logic;
+            paralel_in              :   in  std_logic_vector(511 downto 0);
+            serial_out              :   out std_logic;
+            uart_transmitted_flag   :   out std_logic   
+        );
+    end component;
+
+    component uart_recieve is
+        port(
+            clk					:	in 	std_logic;
+            serial_in			:	in 	STD_LOGIC;
+            en_uart_recieve		:	in	std_logic;
+            reg_out				:	out STD_LOGIC_VECTOR (511 downto 0);
+            uart_recieved_flag	:	out std_logic
+        );
+    end component;
+    
+    component Register512bits_text is
+        port (
+            Input_mux       : in    std_logic_vector (511 downto 0);    -- data input
+            En_Input512    : in    std_logic;                         -- enable signal
+            Res     : in    std_logic;                         -- reset signal
+            Clk     : in    std_logic;                         -- clock signal
+            Data_out512  : out   std_logic_vector (511 downto 0)     -- data output
+        );
+    end component;
+	 
+--	component pll50 IS
+--		PORT-
+--		(
+--			areset		: IN STD_LOGIC  := '0';
+--			inclk0		: IN STD_LOGIC  := '0';
+--			c0		: OUT STD_LOGIC 
+--		);
+--	END component;
+   
+	signal en_uart_recieve_sig      :   std_logic := '0';
+    signal en_uart_transmit_sig      :   std_logic := '0';
+    signal reg_out_sig              :   std_logic_vector(511 downto 0);
+    signal reg_in_sig               :   std_logic_vector(511 downto 0);
+    signal uart_recieved_flag_sig   :   std_logic:= '0';
+    signal uart_transmitted_flag_sig    : std_logic := '0';
+    signal enable_sig               :   std_logic := '0';
+	 SIGNAL RESET							:	 STD_LOGIC := '0';
+	-- signal properclock					:	STD_LOGIC;
+begin
+		
+
+    --pll_used         : using_pll port map(
+      --  areset => '0',
+        --inclk0 => clk,
+        --c0 => clk_120
+    --);
+	 --properclock <= clk;
+	 --pll50instantiation : pll50 port map(
+	--	areset => '0',
+		--inclk0 => clk,
+		--c0 => properclock
+	 --);
+	 
+    uart_recieve_inst: uart_recieve port map(
+        clk => clk,
+        serial_in => rx_line,
+        en_uart_recieve => en_uart_recieve_sig,
+        reg_out => reg_in_sig,
+        uart_recieved_flag => uart_recieved_flag_sig
+    );
+
+    UART_transmit_inst: UART_transmit
+     port map(
+        clk => clk,
+        en_uart_transmit => en_uart_transmit_sig,
+        paralel_in => reg_out_sig,
+        serial_out => tx_line,
+        uart_transmitted_flag => uart_transmitted_flag_sig
+    );
+
+    Register512bits_text_inst: Register512bits_text
+     port map(
+        Input_mux => reg_in_sig,
+        En_Input512 => enable_sig,
+        Res => RESET,
+        Clk => clk,
+        Data_out512 => reg_out_sig
+    );
+	 
+	 
+    control : process(clk, currentstate)
+    begin
+		if (rising_edge(clk)) then
+			case currentstate is
+				when recieving =>
+					enable_sig <= '1';
+					reset <= '0';
+					en_uart_transmit_sig <= '0';
+					en_uart_recieve_sig <= '1';
+					currentstate <= checkrecieved;
+				when checkrecieved =>
+					reset <= '0';
+					en_uart_transmit_sig <= '0';
+					en_uart_recieve_sig <= '0';
+					if (uart_recieved_flag_sig = '1') then
+						enable_sig <= '0';
+						currentstate <= loading;
+					else
+						currentstate <= checkrecieved;
+						enable_sig <= '1';
+					end if;
+				when loading =>
+					enable_sig <= '0';
+					reset <= '0';
+					en_uart_transmit_sig <= '0';
+					en_uart_recieve_sig <= '0';
+					currentstate <= sending;
+				when sending =>	
+					enable_sig <='0';
+					reset <= '0';
+					en_uart_transmit_sig <= '1';
+					en_uart_recieve_sig <= '0';
+					currentstate <= checksent;
+				when checksent =>
+					enable_sig <= '0';
+					reset <= '0';
+					en_uart_transmit_sig <= '0';
+					if (uart_transmitted_flag_sig = '1') then
+						currentstate <= done;
+					else
+						currentstate <= checksent;
+					end if;
+				when done =>
+					reset <= '1';
+					enable_sig <='0';
+					en_uart_recieve_sig <= '0';
+					en_uart_transmit_sig <= '0';
+					currentstate <= donefinale;
+				when donefinale =>
+					enable_sig <= '0';
+					reset <= '0';
+					en_uart_recieve_sig <= '0';
+					en_uart_transmit_sig <= '0';
+					currentstate <= recieving;
+				end case;
+			end if;
+    end process;
+end architecture;

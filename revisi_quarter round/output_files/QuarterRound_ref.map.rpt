@@ -1,0 +1,446 @@
+Analysis & Synthesis report for QuarterRound_ref
+Sat Dec  7 15:53:06 2024
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |QuarterRound_ref|QuarterRoundFSM_ref:FSM|curr_state
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Port Connectivity Checks: "QuarterRoundFSM_ref:FSM"
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Dec  7 15:53:06 2024          ;
+; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                      ; QuarterRound_ref                               ;
+; Top-level Entity Name              ; QuarterRound_ref                               ;
+; Family                             ; Cyclone IV E                                   ;
+; Total logic elements               ; 450                                            ;
+;     Total combinational functions  ; 441                                            ;
+;     Dedicated logic registers      ; 203                                            ;
+; Total registers                    ; 203                                            ;
+; Total pins                         ; 259                                            ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE15F17C9L      ;                    ;
+; Top-level entity name                                            ; QuarterRound_ref   ; QuarterRound_ref   ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                      ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                               ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Register32bit_xor.vhd            ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_xor.vhd   ;         ;
+; Register32bit_add.vhd            ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_add.vhd   ;         ;
+; ROTL.vhd                         ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/ROTL.vhd                ;         ;
+; Register32bit_D.vhd              ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_D.vhd     ;         ;
+; Register32bit_C.vhd              ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_C.vhd     ;         ;
+; Register32bit_B.vhd              ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_B.vhd     ;         ;
+; Register32bit_A.vhd              ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_A.vhd     ;         ;
+; QuarterRound_ref.vhd             ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd    ;         ;
+; QuarterRoundFSM_ref.vhd          ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRoundFSM_ref.vhd ;         ;
+; mux4to2_xor.vhd                  ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux4to2_xor.vhd         ;         ;
+; mux4to2_add.vhd                  ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux4to2_add.vhd         ;         ;
+; mux2to1_D.vhd                    ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_D.vhd           ;         ;
+; mux2to1_C.vhd                    ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_C.vhd           ;         ;
+; mux2to1_B.vhd                    ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_B.vhd           ;         ;
+; mux2to1_A.vhd                    ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_A.vhd           ;         ;
+; demux_2to1_xor.vhd               ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/demux_2to1_xor.vhd      ;         ;
+; demux_1to2_A.vhd                 ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/demux_1to2_A.vhd        ;         ;
+; BitwiseXOR.vhd                   ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/BitwiseXOR.vhd          ;         ;
+; AdderMod32.vhd                   ; yes             ; User VHDL File  ; C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/AdderMod32.vhd          ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 450         ;
+;                                             ;             ;
+; Total combinational functions               ; 441         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 399         ;
+;     -- 3 input functions                    ; 33          ;
+;     -- <=2 input functions                  ; 9           ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 410         ;
+;     -- arithmetic mode                      ; 31          ;
+;                                             ;             ;
+; Total registers                             ; 203         ;
+;     -- Dedicated logic registers            ; 203         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 259         ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; clock~input ;
+; Maximum fan-out                             ; 203         ;
+; Total fan-out                               ; 2869        ;
+; Average fan-out                             ; 2.47        ;
++---------------------------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                          ;
++--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                         ; Entity Name         ; Library Name ;
++--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+---------------------+--------------+
+; |QuarterRound_ref              ; 441 (0)             ; 203 (0)                   ; 0           ; 0            ; 0       ; 0         ; 259  ; 0            ; |QuarterRound_ref                           ; QuarterRound_ref    ; work         ;
+;    |BitwiseXOR:xor_with|       ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|BitwiseXOR:xor_with       ; BitwiseXOR          ; work         ;
+;    |QuarterRoundFSM_ref:FSM|   ; 7 (7)               ; 11 (11)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|QuarterRoundFSM_ref:FSM   ; QuarterRoundFSM_ref ; work         ;
+;    |Register32bit_A:reg_A|     ; 34 (34)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|Register32bit_A:reg_A     ; Register32bit_A     ; work         ;
+;    |Register32bit_B:reg_B|     ; 34 (34)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|Register32bit_B:reg_B     ; Register32bit_B     ; work         ;
+;    |Register32bit_C:reg_C|     ; 34 (34)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|Register32bit_C:reg_C     ; Register32bit_C     ; work         ;
+;    |Register32bit_D:reg_D|     ; 34 (34)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|Register32bit_D:reg_D     ; Register32bit_D     ; work         ;
+;    |Register32bit_add:reg_add| ; 34 (34)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|Register32bit_add:reg_add ; Register32bit_add   ; work         ;
+;    |Register32bit_xor:reg_xor| ; 102 (102)           ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|Register32bit_xor:reg_xor ; Register32bit_xor   ; work         ;
+;    |mux4to2_add:mux_add|       ; 98 (98)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|mux4to2_add:mux_add       ; mux4to2_add         ; work         ;
+;    |mux4to2_xor:mux_xor|       ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |QuarterRound_ref|mux4to2_xor:mux_xor       ; mux4to2_xor         ; work         ;
++--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |QuarterRound_ref|QuarterRoundFSM_ref:FSM|curr_state                                                                                                                                                                                                 ;
++-----------------------+----------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+
+; Name                  ; curr_state.state_add ; curr_state.State_Done ; curr_state.State_7 ; curr_state.State_6 ; curr_state.State_5 ; curr_state.State_4 ; curr_state.State_3 ; curr_state.State_2 ; curr_state.State_1 ; curr_state.State_0 ; curr_state.State_Idle ;
++-----------------------+----------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+
+; curr_state.State_Idle ; 0                    ; 0                     ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                     ;
+; curr_state.State_0    ; 0                    ; 0                     ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 1                     ;
+; curr_state.State_1    ; 0                    ; 0                     ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 1                     ;
+; curr_state.State_2    ; 0                    ; 0                     ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 1                     ;
+; curr_state.State_3    ; 0                    ; 0                     ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 1                     ;
+; curr_state.State_4    ; 0                    ; 0                     ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                     ;
+; curr_state.State_5    ; 0                    ; 0                     ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                     ;
+; curr_state.State_6    ; 0                    ; 0                     ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                     ;
+; curr_state.State_7    ; 0                    ; 0                     ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                     ;
+; curr_state.State_Done ; 0                    ; 1                     ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                     ;
+; curr_state.state_add  ; 1                    ; 0                     ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                     ;
++-----------------------+----------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 203   ;
+; Number of registers using Synchronous Clear  ; 160   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 11    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 192   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |QuarterRound_ref|Register32bit_add:reg_add|v_data[15] ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |QuarterRound_ref|Register32bit_B:reg_B|v_data[23]     ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |QuarterRound_ref|Register32bit_C:reg_C|v_data[23]     ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |QuarterRound_ref|Register32bit_A:reg_A|v_data[2]      ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |QuarterRound_ref|Register32bit_D:reg_D|v_data[31]     ;
+; 13:1               ; 32 bits   ; 256 LEs       ; 128 LEs              ; 128 LEs                ; Yes        ; |QuarterRound_ref|Register32bit_xor:reg_xor|v_data[7]  ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |QuarterRound_ref|mux4to2_add:mux_add|Data1_add[6]     ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |QuarterRound_ref|mux4to2_add:mux_add|Data2_add[0]     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "QuarterRoundFSM_ref:FSM"                                                               ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; cu_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 259                         ;
+; cycloneiii_ff         ; 203                         ;
+;     CLR               ; 11                          ;
+;     ENA               ; 32                          ;
+;     ENA SCLR          ; 160                         ;
+; cycloneiii_lcell_comb ; 441                         ;
+;     arith             ; 31                          ;
+;         3 data inputs ; 31                          ;
+;     normal            ; 410                         ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 2                           ;
+;         4 data inputs ; 399                         ;
+;                       ;                             ;
+; Max LUT depth         ; 7.10                        ;
+; Average LUT depth     ; 3.94                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Sat Dec  7 15:52:46 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off QuarterRound_ref -c QuarterRound_ref
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file register32bit_xor.vhd
+    Info (12022): Found design unit 1: Register32bit_xor-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_xor.vhd Line: 16
+    Info (12023): Found entity 1: Register32bit_xor File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_xor.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file register32bit_add.vhd
+    Info (12022): Found design unit 1: Register32bit_add-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_add.vhd Line: 16
+    Info (12023): Found entity 1: Register32bit_add File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_add.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file rotl.vhd
+    Info (12022): Found design unit 1: ROTL-behavioral File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/ROTL.vhd Line: 27
+    Info (12023): Found entity 1: ROTL File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/ROTL.vhd Line: 19
+Info (12021): Found 2 design units, including 1 entities, in source file register32bit_d.vhd
+    Info (12022): Found design unit 1: Register32bit_D-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_D.vhd Line: 16
+    Info (12023): Found entity 1: Register32bit_D File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_D.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file register32bit_c.vhd
+    Info (12022): Found design unit 1: Register32bit_C-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_C.vhd Line: 16
+    Info (12023): Found entity 1: Register32bit_C File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_C.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file register32bit_b.vhd
+    Info (12022): Found design unit 1: Register32bit_B-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_B.vhd Line: 16
+    Info (12023): Found entity 1: Register32bit_B File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_B.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file register32bit_a.vhd
+    Info (12022): Found design unit 1: Register32bit_A-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_A.vhd Line: 16
+    Info (12023): Found entity 1: Register32bit_A File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/Register32bit_A.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file quarterround_ref.vhd
+    Info (12022): Found design unit 1: QuarterRound_ref-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 16
+    Info (12023): Found entity 1: QuarterRound_ref File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file quarterroundfsm_ref.vhd
+    Info (12022): Found design unit 1: QuarterRoundFSM_ref-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRoundFSM_ref.vhd Line: 28
+    Info (12023): Found entity 1: QuarterRoundFSM_ref File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRoundFSM_ref.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux4to2_xor.vhd
+    Info (12022): Found design unit 1: mux4to2_xor-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux4to2_xor.vhd Line: 18
+    Info (12023): Found entity 1: mux4to2_xor File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux4to2_xor.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux4to2_add.vhd
+    Info (12022): Found design unit 1: mux4to2_add-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux4to2_add.vhd Line: 19
+    Info (12023): Found entity 1: mux4to2_add File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux4to2_add.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux2to1_d.vhd
+    Info (12022): Found design unit 1: mux2to1_D-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_D.vhd Line: 15
+    Info (12023): Found entity 1: mux2to1_D File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_D.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux2to1_c.vhd
+    Info (12022): Found design unit 1: mux2to1_C-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_C.vhd Line: 15
+    Info (12023): Found entity 1: mux2to1_C File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_C.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux2to1_b.vhd
+    Info (12022): Found design unit 1: mux2to1_B-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_B.vhd Line: 15
+    Info (12023): Found entity 1: mux2to1_B File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_B.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux2to1_a.vhd
+    Info (12022): Found design unit 1: mux2to1_A-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_A.vhd Line: 15
+    Info (12023): Found entity 1: mux2to1_A File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/mux2to1_A.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file demux_2to1_xor.vhd
+    Info (12022): Found design unit 1: demux_2to1_xor-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/demux_2to1_xor.vhd Line: 14
+    Info (12023): Found entity 1: demux_2to1_xor File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/demux_2to1_xor.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file demux_1to2_a.vhd
+    Info (12022): Found design unit 1: demux_1to2_Add-rtl File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/demux_1to2_A.vhd Line: 14
+    Info (12023): Found entity 1: demux_1to2_Add File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/demux_1to2_A.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file bitwisexor.vhd
+    Info (12022): Found design unit 1: BitwiseXOR-behavioral File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/BitwiseXOR.vhd Line: 13
+    Info (12023): Found entity 1: BitwiseXOR File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/BitwiseXOR.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file addermod32.vhd
+    Info (12022): Found design unit 1: AdderMod32-behavioral File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/AdderMod32.vhd Line: 13
+    Info (12023): Found entity 1: AdderMod32 File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/AdderMod32.vhd Line: 5
+Info (12127): Elaborating entity "QuarterRound_ref" for the top level hierarchy
+Info (12128): Elaborating entity "mux2to1_A" for hierarchy "mux2to1_A:mux_a" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 256
+Info (12128): Elaborating entity "mux2to1_B" for hierarchy "mux2to1_B:mux_b" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 265
+Info (12128): Elaborating entity "mux2to1_C" for hierarchy "mux2to1_C:mux_c" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 274
+Info (12128): Elaborating entity "mux2to1_D" for hierarchy "mux2to1_D:mux_d" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 283
+Info (12128): Elaborating entity "Register32bit_A" for hierarchy "Register32bit_A:reg_A" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 292
+Info (12128): Elaborating entity "Register32bit_B" for hierarchy "Register32bit_B:reg_B" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 302
+Info (12128): Elaborating entity "Register32bit_C" for hierarchy "Register32bit_C:reg_C" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 312
+Info (12128): Elaborating entity "Register32bit_D" for hierarchy "Register32bit_D:reg_D" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 322
+Info (12128): Elaborating entity "mux4to2_add" for hierarchy "mux4to2_add:mux_add" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 332
+Info (12128): Elaborating entity "AdderMod32" for hierarchy "AdderMod32:adder" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 345
+Info (12128): Elaborating entity "Register32bit_add" for hierarchy "Register32bit_add:reg_add" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 353
+Info (12128): Elaborating entity "demux_1to2_Add" for hierarchy "demux_1to2_Add:dmux_add" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 363
+Info (12128): Elaborating entity "mux4to2_xor" for hierarchy "mux4to2_xor:mux_xor" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 372
+Info (12128): Elaborating entity "BitwiseXOR" for hierarchy "BitwiseXOR:xor_with" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 384
+Info (12128): Elaborating entity "ROTL" for hierarchy "ROTL:n_bit_rotation" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 392
+Info (12128): Elaborating entity "Register32bit_xor" for hierarchy "Register32bit_xor:reg_xor" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 400
+Info (12128): Elaborating entity "demux_2to1_xor" for hierarchy "demux_2to1_xor:dmux_xor" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 410
+Info (12128): Elaborating entity "QuarterRoundFSM_ref" for hierarchy "QuarterRoundFSM_ref:FSM" File: C:/Users/dharm/OneDrive/Documents/Tugas Besar Sistem Digital/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/revisi/QuarterRound_ref.vhd Line: 419
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 709 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 131 input pins
+    Info (21059): Implemented 128 output pins
+    Info (21061): Implemented 450 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4853 megabytes
+    Info: Processing ended: Sat Dec  7 15:53:06 2024
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:27
+
+

@@ -1,0 +1,50 @@
+
+State Machine - |uart_test|currentstate
+Name currentstate.donefinale currentstate.done currentstate.loading currentstate.checkrecieved currentstate.checksent currentstate.sending currentstate.recieving 
+currentstate.recieving 0 0 0 0 0 0 0 
+currentstate.sending 0 0 0 0 0 1 1 
+currentstate.checksent 0 0 0 0 1 0 1 
+currentstate.checkrecieved 0 0 0 1 0 0 1 
+currentstate.loading 0 0 1 0 0 0 1 
+currentstate.done 0 1 0 0 0 0 1 
+currentstate.donefinale 1 0 0 0 0 0 1 
+
+State Machine - |uart_test|UART_transmit:UART_transmit_inst|FSM_uart_transmit:FSM_uart_transmit_inst|currentstate
+Name currentstate.finished currentstate.last_byte currentstate.check_64 currentstate.increment currentstate.sending_each_byte currentstate.starting 
+currentstate.starting 0 0 0 0 0 0 
+currentstate.sending_each_byte 0 0 0 0 1 1 
+currentstate.increment 0 0 0 1 0 1 
+currentstate.check_64 0 0 1 0 0 1 
+currentstate.last_byte 0 1 0 0 0 1 
+currentstate.finished 1 0 0 0 0 1 
+
+State Machine - |uart_test|UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|selector:selector_implemented|currentstate
+Name currentstate.finish currentstate.check_64 currentstate.idle currentstate.s1 currentstate.start 
+currentstate.start 0 0 0 0 0 
+currentstate.s1 0 0 0 1 1 
+currentstate.idle 0 0 1 0 1 
+currentstate.check_64 0 1 0 0 1 
+currentstate.finish 1 0 0 0 1 
+
+State Machine - |uart_test|uart_recieve:uart_recieve_inst|fsm_uart_recieve:fsm_uart_recieve_implemented|currentstate
+Name currentstate.endall currentstate.idle currentstate.check64 currentstate.endrecieving currentstate.recieving currentstate.prerecieve currentstate.start 
+currentstate.start 0 0 0 0 0 0 0 
+currentstate.prerecieve 0 0 0 0 0 1 1 
+currentstate.recieving 0 0 0 0 1 0 1 
+currentstate.endrecieving 0 0 0 1 0 0 1 
+currentstate.check64 0 0 1 0 0 0 1 
+currentstate.idle 0 1 0 0 0 0 1 
+currentstate.endall 1 0 0 0 0 0 1 
+
+State Machine - |uart_test|uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|r_state
+Name r_state.STOP_BIT r_state.DATA_BITS r_state.START_BIT r_state.IDLE 
+r_state.IDLE 0 0 0 0 
+r_state.START_BIT 0 0 1 1 
+r_state.DATA_BITS 0 1 0 1 
+r_state.STOP_BIT 1 0 0 1 
+
+State Machine - |uart_test|uart_recieve:uart_recieve_inst|transmittingtodone:toonewidthimplemented|currentstate
+Name currentstate.s3 currentstate.s2 currentstate.s1 
+currentstate.s1 0 0 0 
+currentstate.s2 0 1 1 
+currentstate.s3 1 0 1 

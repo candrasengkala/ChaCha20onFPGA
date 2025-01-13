@@ -1,0 +1,120 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.math_real.all;
+
+
+entity selector is
+    port(
+        clk         :   in  std_logic;
+        increment_selector      :   in  std_logic;
+        reset_selector        :   in  std_logic;
+        sel_out                 :   out integer range 0 to 504 := 504;
+        done_64       :   out std_logic := '0'
+    );
+    end entity;
+
+architecture rtl of selector is
+signal temporary        :   integer:= 0;
+signal temporary_done   :   std_logic := '0'; 
+type state is (start, s1, idle, check_64, finish);
+--type couterstate is (start, increment, done);
+signal currentstate : state := start;
+--signal countercurrentstate : counterstate;
+begin
+	 fsm : process (clk, currentstate)
+		begin
+		if(rising_edge(clk)) then
+	--	temporary <= 0;
+		--temporary_done <= '0';
+		case currentstate is
+			when start =>
+				temporary <= 504;
+				temporary_done <= '0';
+				if(increment_selector = '1') then
+					currentstate <= s1;
+				else
+					currentstate <= start;
+				end if;
+			when s1 =>
+				temporary <= temporary - 8; --this change will take effect on next clock cycle. It's okay. Perhaps
+				currentstate<= check_64;
+				temporary_done <= temporary_done;
+			when check_64 =>
+				if (temporary = 0) then
+					currentstate <= finish; --tidak ngefek, tetap next clock cycle
+					temporary_done <= '1';
+				else
+					currentstate <= idle;
+					temporary_done <= '0';
+			end if;		
+			when idle =>
+				temporary <= temporary;
+				if (increment_selector = '1') then
+					if(temporary = 8) then
+						temporary_done <= '1';
+					else
+						temporary_done <= temporary_done;
+					end if;
+					currentstate <= s1;
+				else
+					temporary_done <= '0';
+					currentstate <= idle;
+				end if;
+			when finish =>
+				temporary <= temporary;
+				temporary_done <= '1';
+				if(reset_selector = '1') then
+					currentstate <= start;
+				else
+					currentstate <= finish;
+				end if;
+			end case;
+		end if;
+	end process;
+
+	--donecheck : process(temporary, clk)
+	--begin
+	--	if(rising_edge(clk)) then
+	--		if(temporary = 504) then
+	--			temporary_done <= '1';
+	--		else
+	--			temporary_done <= '0';
+	--		end if;
+	--	end if;
+	--end process;
+	
+   -- process(clk, reset_selector, increment_selector, temporary)
+   -- begin
+    --    if (rising_edge(clk)) then
+    --        if (reset_selector = '1') then
+    --            temporary <= 0;
+    --            temporary_done <= '0';
+    --        else
+    --            if (temporary = 504) then
+    --                temporary <= temporary;
+    --                --if (increment_selector = '1') then
+    --                temporary_done <= '1';
+                    --else
+                      --  temporary_done <= temporary_done;
+                    --end if;
+    --            else
+      --              if (increment_selector = '1') then
+       --                 temporary <= temporary + 8;
+			--					if(temporary = 504) then
+				--					temporary <= temporary;
+					---				temporary_done <= '1';
+						--		else
+							---		temporary_done <= '0';
+								---end if;
+                    --else
+                      --  temporary <= temporary; 
+                        --temporary_done <= '0';
+                   -- end if;
+             --   end if;
+            --end if;
+        --end if;
+    --end process;
+    sel_out <= temporary;
+    done_64 <= temporary_done;
+end architecture;

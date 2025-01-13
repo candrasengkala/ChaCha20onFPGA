@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sat Dec  7 15:53:06 2024
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : QuarterRound_ref
+Top-level Entity Name : QuarterRound_ref
+Family : Cyclone IV E
+Total logic elements : 450
+    Total combinational functions : 441
+    Dedicated logic registers : 203
+Total registers : 203
+Total pins : 259
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

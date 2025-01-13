@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sat Jan 11 16:32:24 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : uart_test
+Top-level Entity Name : uart_test
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 1,587 / 6,272 ( 25 % )
+    Total combinational functions : 1,576 / 6,272 ( 25 % )
+    Dedicated logic registers : 1,163 / 6,272 ( 19 % )
+Total registers : 1163
+Total pins : 4 / 92 ( 4 % )
+Total virtual pins : 0
+Total memory bits : 0 / 276,480 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 30 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

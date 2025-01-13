@@ -1,0 +1,14 @@
+
+State Machine - |QuarterRound_ref|QuarterRoundFSM_ref:FSM|curr_state
+Name curr_state.state_add curr_state.State_Done curr_state.State_7 curr_state.State_6 curr_state.State_5 curr_state.State_4 curr_state.State_3 curr_state.State_2 curr_state.State_1 curr_state.State_0 curr_state.State_Idle 
+curr_state.State_Idle 0 0 0 0 0 0 0 0 0 0 0 
+curr_state.State_0 0 0 0 0 0 0 0 0 0 1 1 
+curr_state.State_1 0 0 0 0 0 0 0 0 1 0 1 
+curr_state.State_2 0 0 0 0 0 0 0 1 0 0 1 
+curr_state.State_3 0 0 0 0 0 0 1 0 0 0 1 
+curr_state.State_4 0 0 0 0 0 1 0 0 0 0 1 
+curr_state.State_5 0 0 0 0 1 0 0 0 0 0 1 
+curr_state.State_6 0 0 0 1 0 0 0 0 0 0 1 
+curr_state.State_7 0 0 1 0 0 0 0 0 0 0 1 
+curr_state.State_Done 0 1 0 0 0 0 0 0 0 0 1 
+curr_state.state_add 1 0 0 0 0 0 0 0 0 0 1 

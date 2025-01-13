@@ -1,0 +1,543 @@
+Analysis & Synthesis report for uart_test
+Sat Jan 11 16:32:05 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |uart_test|currentstate
+  9. State Machine - |uart_test|UART_transmit:UART_transmit_inst|FSM_uart_transmit:FSM_uart_transmit_inst|currentstate
+ 10. State Machine - |uart_test|UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|selector:selector_implemented|currentstate
+ 11. State Machine - |uart_test|uart_recieve:uart_recieve_inst|fsm_uart_recieve:fsm_uart_recieve_implemented|currentstate
+ 12. State Machine - |uart_test|uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|r_state
+ 13. State Machine - |uart_test|uart_recieve:uart_recieve_inst|transmittingtodone:toonewidthimplemented|currentstate
+ 14. Registers Removed During Synthesis
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Port Connectivity Checks: "uart_recieve:uart_recieve_inst|fsm_uart_recieve:fsm_uart_recieve_implemented"
+ 19. Port Connectivity Checks: "uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Jan 11 16:32:05 2025          ;
+; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                      ; uart_test                                      ;
+; Top-level Entity Name              ; uart_test                                      ;
+; Family                             ; Cyclone IV E                                   ;
+; Total logic elements               ; 1,593                                          ;
+;     Total combinational functions  ; 1,574                                          ;
+;     Dedicated logic registers      ; 1,163                                          ;
+; Total registers                    ; 1163                                           ;
+; Total pins                         ; 4                                              ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE6E22C8        ;                    ;
+; Top-level entity name                                            ; uart_test          ; uart_test          ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                           ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                    ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+; uart_tx.vhd                      ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_tx.vhd              ;         ;
+; UART_transmit.vhd                ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_transmit.vhd        ;         ;
+; uart_test.vhd                    ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test.vhd            ;         ;
+; uart_rx.vhd                      ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_rx.vhd              ;         ;
+; UART_recieve.vhd                 ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd         ;         ;
+; transmittingtodone.vhd           ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/transmittingtodone.vhd   ;         ;
+; shift_register.vhd               ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/shift_register.vhd       ;         ;
+; selector.vhd                     ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/selector.vhd             ;         ;
+; register512bits_text.vhd         ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/register512bits_text.vhd ;         ;
+; mux_UART_transmit.vhd            ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux_UART_transmit.vhd    ;         ;
+; mux512to8.vhd                    ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux512to8.vhd            ;         ;
+; FSM_UART_transmit.vhd            ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/FSM_UART_transmit.vhd    ;         ;
+; fsm_uart_recieve.vhd             ; yes             ; User VHDL File  ; D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/fsm_uart_recieve.vhd     ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 1,593     ;
+;                                             ;           ;
+; Total combinational functions               ; 1574      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 923       ;
+;     -- 3 input functions                    ; 30        ;
+;     -- <=2 input functions                  ; 621       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 1516      ;
+;     -- arithmetic mode                      ; 58        ;
+;                                             ;           ;
+; Total registers                             ; 1163      ;
+;     -- Dedicated logic registers            ; 1163      ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 4         ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 1163      ;
+; Total fan-out                               ; 8476      ;
+; Average fan-out                             ; 3.09      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                    ;
++---------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------+--------------+
+; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                         ; Entity Name          ; Library Name ;
++---------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------+--------------+
+; |uart_test                                              ; 1574 (6)            ; 1163 (10)                 ; 0           ; 0            ; 0       ; 0         ; 4    ; 0            ; |uart_test                                                                                                                  ; uart_test            ; work         ;
+;    |Register512bits_text:Register512bits_text_inst|     ; 513 (513)           ; 512 (512)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|Register512bits_text:Register512bits_text_inst                                                                   ; Register512bits_text ; work         ;
+;    |UART_transmit:UART_transmit_inst|                   ; 458 (0)             ; 70 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|UART_transmit:UART_transmit_inst                                                                                 ; UART_transmit        ; work         ;
+;       |FSM_uart_transmit:FSM_uart_transmit_inst|        ; 8 (8)               ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|UART_transmit:UART_transmit_inst|FSM_uart_transmit:FSM_uart_transmit_inst                                        ; FSM_uart_transmit    ; work         ;
+;       |mux_UART_transmit:mux_UART_transmit_implemented| ; 414 (0)             ; 35 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented                                 ; mux_UART_transmit    ; work         ;
+;          |mux512to8:mux512to8_implemented|              ; 336 (336)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|mux512to8:mux512to8_implemented ; mux512to8            ; work         ;
+;          |selector:selector_implemented|                ; 78 (78)             ; 35 (35)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|selector:selector_implemented   ; selector             ; work         ;
+;       |uart_tx:uart_tx_implemented|                     ; 36 (36)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented                                                     ; uart_tx              ; work         ;
+;    |uart_recieve:uart_recieve_inst|                     ; 597 (0)             ; 571 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|uart_recieve:uart_recieve_inst                                                                                   ; uart_recieve         ; work         ;
+;       |fsm_uart_recieve:fsm_uart_recieve_implemented|   ; 8 (8)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|uart_recieve:uart_recieve_inst|fsm_uart_recieve:fsm_uart_recieve_implemented                                     ; fsm_uart_recieve     ; work         ;
+;       |shift_register:shift_register_implemented|       ; 524 (524)           ; 520 (520)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|uart_recieve:uart_recieve_inst|shift_register:shift_register_implemented                                         ; shift_register       ; work         ;
+;       |transmittingtodone:toonewidthimplemented|        ; 3 (3)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|uart_recieve:uart_recieve_inst|transmittingtodone:toonewidthimplemented                                          ; transmittingtodone   ; work         ;
+;       |uart_rx:uart_rx_implemented|                     ; 62 (62)             ; 40 (40)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_test|uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented                                                       ; uart_rx              ; work         ;
++---------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_test|currentstate                                                                                                                                                               ;
++----------------------------+-------------------------+-------------------+----------------------+----------------------------+------------------------+----------------------+------------------------+
+; Name                       ; currentstate.donefinale ; currentstate.done ; currentstate.loading ; currentstate.checkrecieved ; currentstate.checksent ; currentstate.sending ; currentstate.recieving ;
++----------------------------+-------------------------+-------------------+----------------------+----------------------------+------------------------+----------------------+------------------------+
+; currentstate.recieving     ; 0                       ; 0                 ; 0                    ; 0                          ; 0                      ; 0                    ; 0                      ;
+; currentstate.sending       ; 0                       ; 0                 ; 0                    ; 0                          ; 0                      ; 1                    ; 1                      ;
+; currentstate.checksent     ; 0                       ; 0                 ; 0                    ; 0                          ; 1                      ; 0                    ; 1                      ;
+; currentstate.checkrecieved ; 0                       ; 0                 ; 0                    ; 1                          ; 0                      ; 0                    ; 1                      ;
+; currentstate.loading       ; 0                       ; 0                 ; 1                    ; 0                          ; 0                      ; 0                    ; 1                      ;
+; currentstate.done          ; 0                       ; 1                 ; 0                    ; 0                          ; 0                      ; 0                    ; 1                      ;
+; currentstate.donefinale    ; 1                       ; 0                 ; 0                    ; 0                          ; 0                      ; 0                    ; 1                      ;
++----------------------------+-------------------------+-------------------+----------------------+----------------------------+------------------------+----------------------+------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_test|UART_transmit:UART_transmit_inst|FSM_uart_transmit:FSM_uart_transmit_inst|currentstate                                                                         ;
++--------------------------------+-----------------------+------------------------+-----------------------+------------------------+--------------------------------+-----------------------+
+; Name                           ; currentstate.finished ; currentstate.last_byte ; currentstate.check_64 ; currentstate.increment ; currentstate.sending_each_byte ; currentstate.starting ;
++--------------------------------+-----------------------+------------------------+-----------------------+------------------------+--------------------------------+-----------------------+
+; currentstate.starting          ; 0                     ; 0                      ; 0                     ; 0                      ; 0                              ; 0                     ;
+; currentstate.sending_each_byte ; 0                     ; 0                      ; 0                     ; 0                      ; 1                              ; 1                     ;
+; currentstate.increment         ; 0                     ; 0                      ; 0                     ; 1                      ; 0                              ; 1                     ;
+; currentstate.check_64          ; 0                     ; 0                      ; 1                     ; 0                      ; 0                              ; 1                     ;
+; currentstate.last_byte         ; 0                     ; 1                      ; 0                     ; 0                      ; 0                              ; 1                     ;
+; currentstate.finished          ; 1                     ; 0                      ; 0                     ; 0                      ; 0                              ; 1                     ;
++--------------------------------+-----------------------+------------------------+-----------------------+------------------------+--------------------------------+-----------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_test|UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|selector:selector_implemented|currentstate ;
++-----------------------+---------------------+-----------------------+-------------------+-----------------+--------------------------------------------+
+; Name                  ; currentstate.finish ; currentstate.check_64 ; currentstate.idle ; currentstate.s1 ; currentstate.start                         ;
++-----------------------+---------------------+-----------------------+-------------------+-----------------+--------------------------------------------+
+; currentstate.start    ; 0                   ; 0                     ; 0                 ; 0               ; 0                                          ;
+; currentstate.s1       ; 0                   ; 0                     ; 0                 ; 1               ; 1                                          ;
+; currentstate.idle     ; 0                   ; 0                     ; 1                 ; 0               ; 1                                          ;
+; currentstate.check_64 ; 0                   ; 1                     ; 0                 ; 0               ; 1                                          ;
+; currentstate.finish   ; 1                   ; 0                     ; 0                 ; 0               ; 1                                          ;
++-----------------------+---------------------+-----------------------+-------------------+-----------------+--------------------------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_test|uart_recieve:uart_recieve_inst|fsm_uart_recieve:fsm_uart_recieve_implemented|currentstate                                                                           ;
++---------------------------+---------------------+-------------------+----------------------+---------------------------+------------------------+-------------------------+--------------------+
+; Name                      ; currentstate.endall ; currentstate.idle ; currentstate.check64 ; currentstate.endrecieving ; currentstate.recieving ; currentstate.prerecieve ; currentstate.start ;
++---------------------------+---------------------+-------------------+----------------------+---------------------------+------------------------+-------------------------+--------------------+
+; currentstate.start        ; 0                   ; 0                 ; 0                    ; 0                         ; 0                      ; 0                       ; 0                  ;
+; currentstate.prerecieve   ; 0                   ; 0                 ; 0                    ; 0                         ; 0                      ; 1                       ; 1                  ;
+; currentstate.recieving    ; 0                   ; 0                 ; 0                    ; 0                         ; 1                      ; 0                       ; 1                  ;
+; currentstate.endrecieving ; 0                   ; 0                 ; 0                    ; 1                         ; 0                      ; 0                       ; 1                  ;
+; currentstate.check64      ; 0                   ; 0                 ; 1                    ; 0                         ; 0                      ; 0                       ; 1                  ;
+; currentstate.idle         ; 0                   ; 1                 ; 0                    ; 0                         ; 0                      ; 0                       ; 1                  ;
+; currentstate.endall       ; 1                   ; 0                 ; 0                    ; 0                         ; 0                      ; 0                       ; 1                  ;
++---------------------------+---------------------+-------------------+----------------------+---------------------------+------------------------+-------------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------+
+; State Machine - |uart_test|uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|r_state ;
++-------------------+------------------+-------------------+-------------------+----------------+
+; Name              ; r_state.STOP_BIT ; r_state.DATA_BITS ; r_state.START_BIT ; r_state.IDLE   ;
++-------------------+------------------+-------------------+-------------------+----------------+
+; r_state.IDLE      ; 0                ; 0                 ; 0                 ; 0              ;
+; r_state.START_BIT ; 0                ; 0                 ; 1                 ; 1              ;
+; r_state.DATA_BITS ; 0                ; 1                 ; 0                 ; 1              ;
+; r_state.STOP_BIT  ; 1                ; 0                 ; 0                 ; 1              ;
++-------------------+------------------+-------------------+-------------------+----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------+
+; State Machine - |uart_test|uart_recieve:uart_recieve_inst|transmittingtodone:toonewidthimplemented|currentstate ;
++-----------------+-----------------+-----------------+-----------------------------------------------------------+
+; Name            ; currentstate.s3 ; currentstate.s2 ; currentstate.s1                                           ;
++-----------------+-----------------+-----------------+-----------------------------------------------------------+
+; currentstate.s1 ; 0               ; 0               ; 0                                                         ;
+; currentstate.s2 ; 0               ; 1               ; 1                                                         ;
+; currentstate.s3 ; 1               ; 0               ; 1                                                         ;
++-----------------+-----------------+-----------------+-----------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                      ;
++--------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                                                                  ; Reason for Removal                     ;
++--------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|selector:selector_implemented|temporary[0..2] ; Stuck at GND due to stuck port data_in ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[9]                                                  ; Stuck at VCC due to stuck port data_in ;
+; currentstate.donefinale                                                                                                        ; Merged with RESET                      ;
+; enable_sig                                                                                                                     ; Merged with currentstate.checkrecieved ;
+; Total Number of Removed Registers = 6                                                                                          ;                                        ;
++--------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1163  ;
+; Number of registers using Synchronous Clear  ; 33    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1095  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                            ;
++-------------------------------------------------------------------------------+---------+
+; Inverted Register                                                             ; Fan out ;
++-------------------------------------------------------------------------------+---------+
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|o_TX_LINE        ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[5] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[6] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[4] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[7] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[2] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[1] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[0] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[3] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[8] ; 1       ;
+; UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|o_BUSY           ; 10      ;
+; uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|r_RX_SYNC[1]       ; 15      ;
+; uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|o_BUSY             ; 4       ;
+; uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|r_RX_SYNC[0]       ; 1       ;
+; uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|r_RX_SYNC[2]       ; 2       ;
+; Total number of inverted registers = 15                                       ;         ;
++-------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |uart_test|uart_recieve:uart_recieve_inst|shift_register:shift_register_implemented|counter[1]                                         ;
+; 3:1                ; 512 bits  ; 1024 LEs      ; 512 LEs              ; 512 LEs                ; Yes        ; |uart_test|Register512bits_text:Register512bits_text_inst|v_data[479]                                                                  ;
+; 3:1                ; 512 bits  ; 1024 LEs      ; 512 LEs              ; 512 LEs                ; Yes        ; |uart_test|uart_recieve:uart_recieve_inst|shift_register:shift_register_implemented|eightbit[17]                                       ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |uart_test|UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|selector:selector_implemented|temporary[6] ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |uart_test|uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|r_CLOCK_COUNT[0]                                                 ;
+; 64:1               ; 8 bits    ; 336 LEs       ; 336 LEs              ; 0 LEs                  ; Yes        ; |uart_test|UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented|r_DATA_BUFFER[5]                                               ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |uart_test|uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|Selector19                                                       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |uart_test|uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented|Selector18                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_recieve:uart_recieve_inst|fsm_uart_recieve:fsm_uart_recieve_implemented" ;
++------------+-------+----------+--------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                  ;
++------------+-------+----------+--------------------------------------------------------------------------+
+; finishflag ; Input ; Info     ; Stuck at GND                                                             ;
++------------+-------+----------+--------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented"                                    ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; o_sig_crrp_data ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 4                           ;
+; cycloneiii_ff         ; 1163                        ;
+;     ENA               ; 1075                        ;
+;     ENA SCLR          ; 20                          ;
+;     SCLR              ; 13                          ;
+;     plain             ; 55                          ;
+; cycloneiii_lcell_comb ; 1575                        ;
+;     arith             ; 58                          ;
+;         2 data inputs ; 58                          ;
+;     normal            ; 1517                        ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 557                         ;
+;         3 data inputs ; 30                          ;
+;         4 data inputs ; 923                         ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 2.43                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:06     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Sat Jan 11 16:31:44 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off uart_test -c uart_test
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file uart_tx.vhd
+    Info (12022): Found design unit 1: uart_tx-behavior File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_tx.vhd Line: 17
+    Info (12023): Found entity 1: uart_tx File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_tx.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file uart_transmit.vhd
+    Info (12022): Found design unit 1: UART_transmit-behavior File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_transmit.vhd Line: 14
+    Info (12023): Found entity 1: UART_transmit File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_transmit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file uart_test_testbench.vhd
+    Info (12022): Found design unit 1: uart_test_testbench-testbench File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test_testbench.vhd Line: 9
+    Info (12023): Found entity 1: uart_test_testbench File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test_testbench.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file uart_test.vhd
+    Info (12022): Found design unit 1: uart_test-behavior File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test.vhd Line: 14
+    Info (12023): Found entity 1: uart_test File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file uart_rx.vhd
+    Info (12022): Found design unit 1: uart_rx-behavior File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_rx.vhd Line: 16
+    Info (12023): Found entity 1: uart_rx File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_rx.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file uart_recieve.vhd
+    Info (12022): Found design unit 1: uart_recieve-behavioral File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 18
+    Info (12023): Found entity 1: uart_recieve File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file uarttransmittest.vhd
+    Info (12022): Found design unit 1: uarttransmittest-rtl File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uarttransmittest.vhd Line: 13
+    Info (12023): Found entity 1: uarttransmittest File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uarttransmittest.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file transmittingtodone.vhd
+    Info (12022): Found design unit 1: transmittingtodone-rtl File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/transmittingtodone.vhd Line: 11
+    Info (12023): Found entity 1: transmittingtodone File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/transmittingtodone.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shift_register.vhd
+    Info (12022): Found design unit 1: shift_register-rtl File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/shift_register.vhd Line: 17
+    Info (12023): Found entity 1: shift_register File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/shift_register.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file selector.vhd
+    Info (12022): Found design unit 1: selector-rtl File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/selector.vhd Line: 17
+    Info (12023): Found entity 1: selector File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/selector.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file register512bits_text.vhd
+    Info (12022): Found design unit 1: Register512bits_text-rtl File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/register512bits_text.vhd Line: 16
+    Info (12023): Found entity 1: Register512bits_text File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/register512bits_text.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux_uart_transmit.vhd
+    Info (12022): Found design unit 1: mux_UART_transmit-behavior File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux_UART_transmit.vhd Line: 18
+    Info (12023): Found entity 1: mux_UART_transmit File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux_UART_transmit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file mux512to8.vhd
+    Info (12022): Found design unit 1: mux512to8-behavior File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux512to8.vhd Line: 15
+    Info (12023): Found entity 1: mux512to8 File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux512to8.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_uart_transmit.vhd
+    Info (12022): Found design unit 1: FSM_uart_transmit-behavior File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/FSM_UART_transmit.vhd Line: 17
+    Info (12023): Found entity 1: FSM_uart_transmit File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/FSM_UART_transmit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file fsm_uart_recieve.vhd
+    Info (12022): Found design unit 1: FSM_uart_recieve-rtl File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/fsm_uart_recieve.vhd Line: 19
+    Info (12023): Found entity 1: fsm_uart_recieve File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/fsm_uart_recieve.vhd Line: 6
+Info (12127): Elaborating entity "uart_test" for the top level hierarchy
+Info (12128): Elaborating entity "uart_recieve" for hierarchy "uart_recieve:uart_recieve_inst" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test.vhd Line: 62
+Warning (10540): VHDL Signal Declaration warning at UART_recieve.vhd(74): used explicit default value for signal "finishflag_sig" because signal was never assigned a value File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 74
+Warning (10036): Verilog HDL or VHDL warning at UART_recieve.vhd(78): object "corruptedflag" assigned a value but never read File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 78
+Info (12128): Elaborating entity "transmittingtodone" for hierarchy "uart_recieve:uart_recieve_inst|transmittingtodone:toonewidthimplemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 87
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_recieve:uart_recieve_inst|uart_rx:uart_rx_implemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 89
+Info (12128): Elaborating entity "fsm_uart_recieve" for hierarchy "uart_recieve:uart_recieve_inst|fsm_uart_recieve:fsm_uart_recieve_implemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 90
+Info (12128): Elaborating entity "shift_register" for hierarchy "uart_recieve:uart_recieve_inst|shift_register:shift_register_implemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_recieve.vhd Line: 91
+Info (12128): Elaborating entity "UART_transmit" for hierarchy "UART_transmit:UART_transmit_inst" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test.vhd Line: 70
+Info (12128): Elaborating entity "uart_tx" for hierarchy "UART_transmit:UART_transmit_inst|uart_tx:uart_tx_implemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_transmit.vhd Line: 74
+Info (12128): Elaborating entity "mux_UART_transmit" for hierarchy "UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_transmit.vhd Line: 77
+Info (12128): Elaborating entity "mux512to8" for hierarchy "UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|mux512to8:mux512to8_implemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux_UART_transmit.vhd Line: 43
+Info (12128): Elaborating entity "selector" for hierarchy "UART_transmit:UART_transmit_inst|mux_UART_transmit:mux_UART_transmit_implemented|selector:selector_implemented" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/mux_UART_transmit.vhd Line: 44
+Info (12128): Elaborating entity "FSM_uart_transmit" for hierarchy "UART_transmit:UART_transmit_inst|FSM_uart_transmit:FSM_uart_transmit_inst" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/UART_transmit.vhd Line: 78
+Info (12128): Elaborating entity "Register512bits_text" for hierarchy "Register512bits_text:Register512bits_text_inst" File: D:/test_ngirim/Tugas-Besar-Sistem-Digital-Chacha20-Encryption/finalest/uart_test.vhd Line: 78
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1598 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 2 output pins
+    Info (21061): Implemented 1594 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4806 megabytes
+    Info: Processing ended: Sat Jan 11 16:32:05 2025
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:25
+
+
